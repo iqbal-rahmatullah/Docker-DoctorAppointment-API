@@ -1,6 +1,12 @@
 const apiAdapter = require("../axios/apiAdapter")
 
-const api = apiAdapter("http://localhost:5000")
+require("dotenv").config()
+
+const {
+    URL_SERVICE_RATING
+}  = process.env
+
+const api = apiAdapter(URL_SERVICE_RATING)
 
 const addRating = async (req, res)=>{
     // return res.json(req.body)

@@ -1,7 +1,13 @@
 const apiAdapter = require("../axios/apiAdapter")
 const jwt = require("jsonwebtoken")
 
-const api = apiAdapter("http://localhost:4000")
+require("dotenv").config()
+
+const {
+    URL_SERVICE_USER
+}  = process.env
+
+const api = apiAdapter(URL_SERVICE_USER)
 
 const register = async(req,res)=>{
     try {

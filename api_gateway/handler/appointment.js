@@ -1,6 +1,12 @@
 const apiAdapter = require("../axios/apiAdapter")
 
-const api = apiAdapter("http://localhost:8000")
+require("dotenv").config()
+
+const {
+    URL_SERVICE_APPOINTMENT
+}  = process.env
+
+const api = apiAdapter(URL_SERVICE_APPOINTMENT)
 
 const addAppointment = async (req,res)=>{
     try {

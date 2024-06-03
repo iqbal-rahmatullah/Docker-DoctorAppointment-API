@@ -1,6 +1,12 @@
 const apiAdapter = require("../axios/apiAdapter")
 
-const api = apiAdapter("http://localhost:6000")
+require("dotenv").config()
+
+const {
+    URL_SERVICE_DOCTOR
+}  = process.env
+
+const api = apiAdapter(URL_SERVICE_DOCTOR)
 
 const allDoctors = async (req, res) => {
     try {

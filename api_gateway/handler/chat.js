@@ -1,6 +1,11 @@
 const apiAdapter = require("../axios/apiAdapter")
+require("dotenv").config()
 
-const api = apiAdapter("http://localhost:7001")
+const {
+    URL_SERVICE_CHAT
+}  = process.env
+
+const api = apiAdapter(URL_SERVICE_CHAT)
 
 const addChat = async (req, res)=>{
     try {
