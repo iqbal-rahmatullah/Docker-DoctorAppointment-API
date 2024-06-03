@@ -9,7 +9,12 @@ COPY package*.json ./
 
 # Menginstal dependencies
 RUN npm install
-RUN npx prisma generate 
+
+# Menyalin direktori prisma secara khusus sebelum prisma generate
+COPY prisma ./prisma
+
+# Menjalankan npx prisma generate setelah dependencies terinstall dan prisma schema disalin
+RUN npx prisma generate
 
 # Menyalin seluruh kode aplikasi ke direktori kerja
 COPY . .
