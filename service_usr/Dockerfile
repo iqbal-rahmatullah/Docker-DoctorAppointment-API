@@ -9,6 +9,7 @@ COPY package*.json ./
 
 # Menginstal dependencies
 RUN npm install
+RUN npx prisma generate 
 
 # Menyalin seluruh kode aplikasi ke direktori kerja
 COPY . .
