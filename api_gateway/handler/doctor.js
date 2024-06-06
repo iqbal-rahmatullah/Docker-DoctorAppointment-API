@@ -9,6 +9,7 @@ const {
 const api = apiAdapter(URL_SERVICE_DOCTOR)
 
 const allDoctors = async (req, res) => {
+    
     try {
         const doctors = await api.get("/api/v1/doctors") 
         return res.status(200).json(doctors.data)

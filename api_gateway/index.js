@@ -10,6 +10,9 @@ const app = new express();
 
 app.use(express.json())
 app.use(cors())
+app.use("/test", (req, res)=>{
+    return res.json("test")
+})
 
 app.use("/", userRouter)
 app.use("/doctors", doctorRouter)
