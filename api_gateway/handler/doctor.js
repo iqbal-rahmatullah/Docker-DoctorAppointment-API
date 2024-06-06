@@ -14,10 +14,7 @@ const allDoctors = async (req, res) => {
         const doctors = await api.get("/api/v1/doctors") 
         return res.status(200).json(doctors.data)
     } catch (error) {
-        return res.status(500).json({
-            status : "error",
-            message : error.message
-        })
+        return res.status(error.response.status).json(error.response.data);
     }
 }
 const getDoctor = async (req, res) => {
@@ -26,10 +23,7 @@ const getDoctor = async (req, res) => {
         const doctor = await api.get("/api/v1/doctors/"+id) 
         return res.status(200).json(doctor.data)
     } catch (error) {
-        return res.status(500).json({
-            status : "error",
-            message : error.message
-        })
+        return res.status(error.response.status).json(error.response.data);
     }
 }
 const getDoctorByCategory = async (req, res) => {
@@ -38,10 +32,7 @@ const getDoctorByCategory = async (req, res) => {
         const doctor = await api.get("/api/v1/doctors/category/"+category) 
         return res.status(200).json(doctor.data)
     } catch (error) {
-        return res.status(500).json({
-            status : "error",
-            message : error.message
-        })
+        return res.status(error.response.status).json(error.response.data);
     }
 }
 

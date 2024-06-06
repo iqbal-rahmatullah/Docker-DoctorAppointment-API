@@ -10,15 +10,11 @@ const {
 const api = apiAdapter(URL_SERVICE_USER)
 
 const register = async(req,res)=>{
-    return res.json(URL_SERVICE_USER)
     try {
         const user = await api.post("/api/v1/register",req.body)
         return res.status(200).json(user.data)
     } catch (error) {
-        return res.status(500).json({
-            status :"error",
-            message : error.message
-        })
+        return res.status(error.response.status).json(error.response.data);
     }
 } 
 
@@ -28,10 +24,7 @@ const login = async(req, res)=>{
         const token = jwt.sign(user.data, "passwordKey")
         return res.status(200).json({token})
     } catch (error) {
-        return res.status(500).json({
-            status :"error",
-            message : error.message
-        })
+        return res.status(error.response.status).json(error.response.data);
     }
 }
 
@@ -42,10 +35,7 @@ const getUser = async(req,res)=>{
         const user = await api.get("/api/v1/users/"+id)
         return res.status(200).json( user.data )
     } catch (error) {
-        return res.status(500).json({
-            status : "error",
-            message : error.message
-        })
+        return res.status(error.response.status).json(error.response.data);
     }
 }
 
@@ -56,10 +46,7 @@ const updateUser = async(req,res)=>{
         const user = await api.put("/api/v1/users/"+id,req.body)
         return res.status(200).json(user.data)
     } catch (error) {
-        return res.status(500).json({
-            status : "error",
-            message : error.message
-        })
+        return res.status(error.response.status).json(error.response.data);
     }
 }
 
@@ -69,10 +56,7 @@ const changePassword = async(req,res)=>{
         const user = await api.put("/api/v1/users/change-password/"+id,req.body)
         return res.status(200).json(user.data)
     } catch (error) {
-        return res.status(500).json({
-            status : "error",
-            message : error.message
-        })
+        return res.status(error.response.status).json(error.response.data);
     }
 }
 
