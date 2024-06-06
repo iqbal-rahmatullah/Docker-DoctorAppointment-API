@@ -10,6 +10,7 @@ const {
 const api = apiAdapter(URL_SERVICE_USER)
 
 const register = async(req,res)=>{
+    return res.json(URL_SERVICE_USER)
     try {
         const user = await api.post("/api/v1/register",req.body)
         return res.status(200).json(user.data)

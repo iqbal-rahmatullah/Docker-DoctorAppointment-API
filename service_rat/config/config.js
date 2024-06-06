@@ -9,10 +9,10 @@ const {
 
 module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": 'meet_doctor',
-    "host": '127.0.0.1',
+    "username":DB_USERNAME,
+    "password": DB_PASSWORD,
+    "database": DB_NAME,
+    "host": DB_HOST,
     "dialect": "mysql"
   },
   "test": {
