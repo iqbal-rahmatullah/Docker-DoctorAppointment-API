@@ -51,7 +51,7 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 
-db.Doctor = require("./Doctor")(sequelize, Sequelize)
+db.Doctor = require("./Doctor.js")(sequelize, Sequelize)
 db.User = require("./User.js")(sequelize, Sequelize)
 db.Rating = require("./Rating.js")(sequelize, Sequelize)
 

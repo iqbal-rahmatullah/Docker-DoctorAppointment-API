@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  api_gateway:
+    container_name: api_gateway
+    build: ./api_gateway
+    ports:
+      - "3000:3000"
+  service_user:
+    container_name: service_user
+    build: ./service_user
+    ports:
+      - "4000:4000"
+  mysql:
+    container_name: db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"

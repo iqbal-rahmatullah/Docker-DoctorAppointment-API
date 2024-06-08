@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize")
-const User = require("../models/User")
+const User = require("./User")
 
 module.exports = (sequelize, DataTypes) => {
   const Doctor = sequelize.define(
