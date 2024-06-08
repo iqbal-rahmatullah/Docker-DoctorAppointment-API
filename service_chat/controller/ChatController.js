@@ -3,11 +3,13 @@ const prisma = new PrismaClient()
 
 const ChatController = {
   getChat: async (req, res) => {
-    
     try {
       const chat = await prisma.chat.findMany({
         where: {
-          OR: [{ doctor_id: parseInt(req.params.userId) }, { patient_id: parseInt(req.params.userId) }],
+          OR: [
+            { doctor_id: parseInt(req.params.userId) },
+            { patient_id: parseInt(req.params.userId) },
+          ],
         },
         include: {
           patient: true,
@@ -156,6 +158,29 @@ const ChatController = {
       res.status(201).json({
         message: "Chat berhasil ditambahkan",
         data: newChat,
+      })
+    } catch (error) {
+      return res.status(500).json({
+        message: "Terjadi kesalahan error",
+        error: error.message,
+      })
+    }
+  },
+
+  openChat: async (req, res) => {
+    try {
+      const { receive_id } = req.body
+
+      const openChat = await prisma.chat.create({
+        data: {
+          patient_id: req.body.userId,
+          doctor_id: parseInt(receive_id),
+        },
+      })
+
+      return res.status(201).json({
+        message: "Chat berhasil dibuat",
+        data: openChat,
       })
     } catch (error) {
       return res.status(500).json({

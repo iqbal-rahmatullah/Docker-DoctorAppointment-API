@@ -5,10 +5,6 @@ const cookieParser = require("cookie-parser")
 const logger = require("morgan")
 
 const indexRouter = require("./routes/index")
-const usersRouter = require("./routes/users")
-const doctorRouter = require("./routes/doctor")
-const ratingRouter = require("./routes/rating")
-const appointmentRouter = require("./routes/appointment")
 const chatRouter = require("./routes/chat")
 const cors = require("cors")
 
@@ -26,10 +22,6 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(cors())
 
 app.use("/", indexRouter)
-app.use("/api/v1", usersRouter)
-app.use("/api/v1/doctors", doctorRouter)
-app.use("/api/v1/ratings", ratingRouter)
-app.use("/api/v1/appointment/", appointmentRouter)
 app.use("/api/v1/chat/", chatRouter)
 
 // catch 404 and forward to error handler
