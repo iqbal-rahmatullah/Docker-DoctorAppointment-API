@@ -5,8 +5,6 @@ require("dotenv").config()
 
 const { URL_SERVICE_USER } = process.env
 
-console.log(URL_SERVICE_USER)
-
 const api = apiAdapter(URL_SERVICE_USER)
 
 const register = async (req, res) => {
