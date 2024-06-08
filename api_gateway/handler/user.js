@@ -12,7 +12,12 @@ const register = async (req, res) => {
     const user = await api.post("/api/v1/register", req.body)
     return res.status(200).json(user.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(error)
   }
 }
 
@@ -22,7 +27,12 @@ const login = async (req, res) => {
     const token = jwt.sign(user.data, "passwordKey")
     return res.status(200).json({ token })
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(error)
   }
 }
 
@@ -33,7 +43,12 @@ const getUser = async (req, res) => {
     const user = await api.get("/api/v1/users/" + id)
     return res.status(200).json(user.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 
@@ -44,7 +59,12 @@ const updateUser = async (req, res) => {
     const user = await api.put("/api/v1/users/" + id, req.body)
     return res.status(200).json(user.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 
@@ -54,7 +74,12 @@ const changePassword = async (req, res) => {
     const user = await api.put("/api/v1/users/change-password/" + id, req.body)
     return res.status(200).json(user.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 

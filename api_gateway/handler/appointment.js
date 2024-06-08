@@ -15,7 +15,12 @@ const addAppointment = async (req, res) => {
     const appointment = await api.post("/api/v1/appointment", req.body)
     return res.status(200).json(appointment.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 const getAppointmentDoctor = async (req, res) => {
@@ -25,7 +30,12 @@ const getAppointmentDoctor = async (req, res) => {
     const appointment = await api.get("/api/v1/appointment/doctor", req.body)
     return res.status(200).json(appointment.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 const getAppointmentPatient = async (req, res) => {
@@ -35,7 +45,12 @@ const getAppointmentPatient = async (req, res) => {
     const appointment = await api.get("/api/v1/appointment/patient", req.body)
     return res.status(200).json(appointment.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 const getDetailAppointment = async (req, res) => {
@@ -48,10 +63,20 @@ const getDetailAppointment = async (req, res) => {
       const appointment = await api.get("/api/v1/appointment/" + id, req.body)
       return res.status(200).json(appointment.data)
     } catch (error) {
-      return res.status(error.response.status).json(error.response.data)
+      const status = error.response ? error.response.status : 500
+      const message = error.response
+        ? error.response.data
+        : { error: "Internal Server Error" }
+
+      return res.status(status).json(message)
     }
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 const updateAppointment = async (req, res) => {
@@ -62,7 +87,12 @@ const updateAppointment = async (req, res) => {
     const appointment = await api.put("/api/v1/appointment/" + id, req.body)
     return res.status(200).json(appointment.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 
@@ -77,7 +107,12 @@ const getClock = async (req, res) => {
     )
     return res.status(200).json(appointment.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 

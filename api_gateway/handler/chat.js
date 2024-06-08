@@ -11,7 +11,12 @@ const addChat = async (req, res) => {
     const chat = await api.post("/api/v1/chat", req.body)
     return res.status(200).json(chat.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 const getChat = async (req, res) => {
@@ -21,7 +26,12 @@ const getChat = async (req, res) => {
     const chat = await api.get("/api/v1/chat/chat-user/" + req.user, req.body)
     return res.status(200).json(chat.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 const getDetailChat = async (req, res) => {
@@ -34,7 +44,12 @@ const getDetailChat = async (req, res) => {
     )
     return res.status(200).json(chat.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 const getMessage = async (req, res) => {
@@ -45,7 +60,12 @@ const getMessage = async (req, res) => {
     const chat = await api.get("/api/v1/chat/message/" + id, req.body)
     return res.status(200).json(chat.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 
@@ -55,7 +75,12 @@ const openChat = async (req, res) => {
     const chat = await api.post("/api/v1/chat/open-chat", req.body)
     return res.status(200).json(chat.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 

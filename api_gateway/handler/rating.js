@@ -15,7 +15,12 @@ const addRating = async (req, res) => {
     const rating = await api.post("/api/v1/ratings", req.body)
     return res.status(200).json(rating.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 const getAllRating = async (req, res) => {
@@ -25,7 +30,12 @@ const getAllRating = async (req, res) => {
     const rating = await api.get("/api/v1/ratings/" + doctorId)
     return res.status(200).json(rating.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 
@@ -35,7 +45,12 @@ const checkRating = async (req, res) => {
     const rating = await api.get("/api/v1/ratings/check/" + appointmentId)
     return res.status(200).json(rating.data)
   } catch (error) {
-    return res.status(error.response.status).json(error.response.data)
+    const status = error.response ? error.response.status : 500
+    const message = error.response
+      ? error.response.data
+      : { error: "Internal Server Error" }
+
+    return res.status(status).json(message)
   }
 }
 
