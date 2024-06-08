@@ -7,12 +7,12 @@ router.get("/patient", AppointmentController.getAppointmentPatient)
 router.get("/doctor", AppointmentController.getAppointmentDoctor)
 router
   .route("/:id")
-  .get( AppointmentController.getDetailAppointmet)
-  .put( AppointmentController.updateAppointment)
-router.route("/").post( AppointmentController.addAppointment)
+  .get(AppointmentController.getDetailAppointmet)
+  .put(AppointmentController.updateAppointment)
+router.route("/").post(AppointmentController.addAppointment)
 router.get(
   "/clock/:doctor_id",
-  
+
   AppointmentController.getClockAppointment
 )
 

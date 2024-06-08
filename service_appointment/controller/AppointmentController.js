@@ -123,10 +123,14 @@ const AppointmentController = {
       const { id } = req.params
       const appointment = await prisma.appointment.findFirst({
         where: {
-          id: parseInt(id),
+          AND: [{ id: parseInt(id) }, { patient_id: req.body.userId }],
         },
         include: {
-          doctor: true,
+          doctor: {
+            include: {
+              user: true,
+            },
+          },
           patient: true,
         },
       })
@@ -201,10 +205,10 @@ const AppointmentController = {
           id: parseInt(id),
         },
         data: {
-          patient_id: parseInt(req.body.userId),
-          doctor_id: parseInt(req.body.doctor_id),
-          date: new Date(req.body.date),
-          time: new Date(req.body.time),
+          patient_id: parseInt(checkAppointment.patient_id),
+          doctor_id: parseInt(checkAppointment.doctor_id),
+          date: new Date(checkAppointment.date),
+          time: new Date(checkAppointment.time),
           status: req.body.status,
         },
       })
@@ -224,7 +228,7 @@ const AppointmentController = {
   getClockAppointment: async (req, res) => {
     try {
       const { doctor_id } = req.params
-      const { date } = req.body
+      const { date } = req.query
 
       const parsedDate = new Date(date)
       const startOfDay = new Date(parsedDate.setHours(0, 0, 0, 0))
@@ -235,6 +239,9 @@ const AppointmentController = {
           AND: [
             {
               doctor_id: parseInt(doctor_id),
+            },
+            {
+              status: "ongoing",
             },
             {
               date: {
