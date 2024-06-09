@@ -1,40 +1,4 @@
 services:
-  api_gateway:
-    container_name: api_gateway
-    build: ./api_gateway
-    ports:
-      - "3000:3000"
-    environment:
-      - URL_SERVICE_USER=${URL_SERVICE_USER}
-      - URL_SERVICE_DOCTOR=${URL_SERVICE_DOCTOR}
-    networks:
-      - backend
-  service_user:
-    container_name: service_user
-    build: ./service_user
-    ports:
-      - "4000:4000"
-    environment:
-      - DB_NAME=${DB_NAME}
-      - DB_HOST=${DB_HOST}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DATABASE_URL=${DATABASE_URL}
-    networks:
-      - backend
-  service_doctor:
-    container_name: service_doctor
-    build: ./service_doctor
-    ports:
-      - "6000:6000"
-    environment:
-      - DB_NAME=${DB_NAME}
-      - DB_HOST=${DB_HOST}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DATABASE_URL=${DATABASE_URL}
-    networks:
-      - backend
   mysql:
     container_name: db
     image: mysql
@@ -43,6 +7,55 @@ services:
       MYSQL_ROOT_PASSWORD: password
     networks:
       - backend
+
+  api_gateway:
+    container_name: api_gateway
+    build: ./api_gateway
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+
+  service_user:
+    container_name: service_user
+    build: ./service_user
+    ports:
+      - "4000:4000"
+    networks:
+      - backend
+
+  service_chat:
+    container_name: service_chat
+    build: ./service_chat
+    ports:
+      - "7001:7001"
+    networks:
+      - backend
+
+  service_rating:
+    container_name: service_rating
+    build: ./service_rating
+    ports:
+      - "5001:5001"
+    networks:
+      - backend
+
+  service_appointment:
+    container_name: service_appointment
+    build: ./service_appointment
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+
+  service_doctor:
+    container_name: service_doctor
+    build: ./service_doctor
+    ports:
+      - "6000:6000"
+    networks:
+      - backend
+
   adminer:
     container_name: adminer
     image: adminer
