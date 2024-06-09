@@ -126,9 +126,17 @@ const getAllRating = async (req, res) => {
       },
     })
 
+    if(ratings.length == 0){ 
+      return res.status(404).json({
+        status: "not found",
+        data: "Data tidak ditemukan",
+      })
+    }
+
+
     return res.status(200).json({
       status: "success",
-      data: ratings,
+      data: rating
     })
   } catch (error) {
     return res.status(500).json({
