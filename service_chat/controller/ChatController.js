@@ -96,7 +96,7 @@ const ChatController = {
         },
       })
 
-      if (chat == null) {
+      if (chat.length == 0) {
         return res.status(404).json({
           message: "Data chat tidak ditemukan",
           data: [],
