@@ -135,7 +135,7 @@ const AppointmentController = {
         },
       })
 
-      if (appointment.length == 0) {
+      if (appointment == null) {
         return res.status(404).json({
           message: "Data appointment tidak ditemukan",
         })
