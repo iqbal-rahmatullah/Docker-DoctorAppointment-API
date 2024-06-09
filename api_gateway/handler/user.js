@@ -17,7 +17,7 @@ const register = async (req, res) => {
       ? error.response.data
       : { error: "Internal Server Error" }
 
-    return res.status(status).json(error)
+    return res.status(status).json(message)
   }
 }
 
@@ -32,7 +32,7 @@ const login = async (req, res) => {
       ? error.response.data
       : { error: "Internal Server Error" }
 
-    return res.status(status).json(error)
+    return res.status(status).json(message)
   }
 }
 

@@ -16,7 +16,7 @@ const allDoctors = async (req, res) => {
       ? error.response.data
       : { error: "Internal Server Error" }
 
-    return res.status(status).json(error)
+    return res.status(status).json(message)
   }
 }
 const getDoctor = async (req, res) => {
@@ -30,7 +30,7 @@ const getDoctor = async (req, res) => {
       ? error.response.data
       : { error: "Internal Server Error" }
 
-    return res.status(status).json(error)
+    return res.status(status).json(message)
   }
 }
 const getDoctorByCategory = async (req, res) => {
@@ -44,7 +44,7 @@ const getDoctorByCategory = async (req, res) => {
       ? error.response.data
       : { error: "Internal Server Error" }
 
-    return res.status(status).json(error)
+    return res.status(status).json(message)
   }
 }
 
