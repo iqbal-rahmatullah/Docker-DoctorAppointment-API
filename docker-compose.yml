@@ -15,6 +15,12 @@ services:
       - "3000:3000"
     networks:
       - backend
+    environment:
+      - URL_SERVICE_USER=http://142.93.14.210:4000
+      - URL_SERVICE_DOCTOR=http://142.93.14.210:6000
+      - URL_SERVICE_CHAT=http://142.93.14.210:7001
+      - URL_SERVICE_RATING=http://142.93.14.210:5001
+      - URL_SERVICE_APPOINTMENT=http://142.93.14.210:8000
 
   service_user:
     container_name: service_user
@@ -23,6 +29,12 @@ services:
       - "4000:4000"
     networks:
       - backend
+    environment:
+      - DB_NAME=meet_doctor
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DATABASE_URL=mysql://root:password@db/meet_doctor
 
   service_chat:
     container_name: service_chat
@@ -31,6 +43,12 @@ services:
       - "7001:7001"
     networks:
       - backend
+    environment:
+      - DB_NAME=meet_doctor
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DATABASE_URL=mysql://root:password@db/meet_doctor
 
   service_rating:
     container_name: service_rating
@@ -39,6 +57,12 @@ services:
       - "5001:5001"
     networks:
       - backend
+    environment:
+      - DB_NAME=meet_doctor
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DATABASE_URL=mysql://root:password@db/meet_doctor
 
   service_appointment:
     container_name: service_appointment
@@ -47,6 +71,12 @@ services:
       - "8000:8000"
     networks:
       - backend
+    environment:
+      - DB_NAME=meet_doctor
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DATABASE_URL=mysql://root:password@db/meet_doctor
 
   service_doctor:
     container_name: service_doctor
@@ -55,6 +85,12 @@ services:
       - "6000:6000"
     networks:
       - backend
+    environment:
+      - DB_NAME=meet_doctor
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DATABASE_URL=mysql://root:password@db/meet_doctor
 
   adminer:
     container_name: adminer
@@ -64,6 +100,12 @@ services:
       - "8081:8080"
     networks:
       - backend
+    environment:
+      - DB_NAME=meet_doctor
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DATABASE_URL=mysql://root:password@db/meet_doctor
 
 networks:
   backend:
